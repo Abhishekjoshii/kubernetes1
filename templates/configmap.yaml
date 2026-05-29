@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: shopeasy-config
 data:
-  APP_NAME: "Shopeasy"
+  APP_NAME: "{{ .Values.config.appName }}"
