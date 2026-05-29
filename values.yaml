@@ -5,3 +5,9 @@ image:
 service:
   frontendPort: 3000
   backendPort: 5000
+
+config:
+  appName: Shopeasy
+
+storage:
+  size: 1Gi
