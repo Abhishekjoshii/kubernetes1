@@ -18,3 +18,25 @@ spec:
           ports:
             - containerPort: 3000
             - containerPort: 5000
+
+          env:
+            - name: APP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: shopeasy-config
+                  key: APP_NAME
+
+          volumeMounts:
+            - name: temp-storage
+              mountPath: /tmp/cache
+
+            - name: persistent-storage
+              mountPath: /app/uploads
+
+      volumes:
+        - name: temp-storage
+          emptyDir: {}
+
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: shopeasy-pvc
