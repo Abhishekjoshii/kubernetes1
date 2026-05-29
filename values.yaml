@@ -1,0 +1,7 @@
+image:
+  repository: abhishekjoshhi/ecomm1
+  tag: v1.0.0
+
+service:
+  frontendPort: 3000
+  backendPort: 5000

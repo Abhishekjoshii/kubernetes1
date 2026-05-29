@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopeasy
+  template:
+    metadata:
+      labels:
+        app: shopeasy
+    spec:
+      containers:
+        - name: shopeasy
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 3000
+            - containerPort: 5000
