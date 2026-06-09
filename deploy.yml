@@ -1,0 +1,22 @@
+---
+- hosts: tomcat
+  become: yes
+
+  tasks:
+
+    - name: Stop Tomcat
+      shell: /opt/tomcat/bin/shutdown.sh
+      ignore_errors: yes
+
+    - name: Remove old WAR
+      file:
+        path: /opt/tomcat/webapps/maven-web-application.war
+        state: absent
+
+    - name: Copy WAR
+      copy:
+        src: target/maven-web-application.war
+        dest: /opt/tomcat/webapps/
+
+    - name: Start Tomcat
+      shell: /opt/tomcat/bin/startup.sh
